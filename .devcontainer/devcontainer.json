@@ -1,0 +1,11 @@
+{
+  "name": "Nextjs with pnpm",
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
+  "remoteUser": "node",
+  "features": {
+    "ghcr.io/devcontainers-contrib/features/pnpm:2": {}
+  },
+  "postCreateCommand": "pnpm install"
+}
