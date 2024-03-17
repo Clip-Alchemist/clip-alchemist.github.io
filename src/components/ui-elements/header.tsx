@@ -13,7 +13,6 @@ import {
   NavigationMenuLink,
   NavigationMenuList,
   NavigationMenuTrigger,
-  navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
 
 export default function Header() {
@@ -41,19 +40,23 @@ export default function Header() {
                 <ul className="grid w-52 gap-3 p-4">
                   <ListItem
                     title="Start on the Web"
-                    href=""
+                    href="/Clip-Alchemist"
                     target="_blank"
                   ></ListItem>
                   <ListItem
                     title="Download for your Computer"
-                    href=""
+                    href="/download"
                     target="_blank"
                   ></ListItem>
                 </ul>
               </NavigationMenuContent>
             </NavigationMenuItem>
             <NavigationMenuItem>
-              <NavigationMenuLink className="cursor-pointer select-none group block h-9 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-accent/50 data-[state=open]:bg-accent/50">
+              <NavigationMenuLink
+                className="cursor-pointer select-none group block h-9 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-accent/50 data-[state=open]:bg-accent/50"
+                href="/docs"
+                target="_blank"
+              >
                 Documentation
               </NavigationMenuLink>
             </NavigationMenuItem>

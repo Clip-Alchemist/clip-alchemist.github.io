@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import Link from "next/link";
 import { Noto_Sans } from "next/font/google";
 const NotoSansFont = Noto_Sans({
   subsets: ["latin"],
@@ -15,14 +16,16 @@ export default function Home() {
             Be the alchemist of your own story.
           </h2>
           <p className="max-w-4xl">
-            Clip Alchemist is a open source video editing software that gives you the
-            freedom to edit your videos.
+            Clip Alchemist is a open source video editing software that gives
+            you the freedom to edit your videos.
             <br />
             Use it in your web browser (Chrome recommended) for quick and easy
             edits, or install it on your computer for access to all its powerful
             features.
           </p>
-          <Button>Get started</Button>
+          <Button asChild>
+            <Link href="/download" target="_blank">Get started</Link>
+          </Button>
         </div>
         {/* function introduction */}
         <div className="w-full">
@@ -36,8 +39,13 @@ export default function Home() {
               height={360}
             />
             <div className="flex-1 md:w-1/2">
-              <h2 className="text-4xl font-bold mb-4">Function 1</h2>
-              <p>description</p>
+              <h2 className="text-4xl font-bold mb-4">Editing Movies</h2>
+              <p>
+                You can edit videos by using on the web or installing this app.
+                <br />
+                You can use basic video editing functions such as cutting videos
+                and adding subtitles.
+              </p>
             </div>
           </div>
         </div>
@@ -52,8 +60,13 @@ export default function Home() {
               height={360}
             />
             <div className="flex-1 md:w-1/2">
-              <h2 className="text-4xl font-bold mb-4">Function 2</h2>
-              <p>description</p>
+              <h2 className="text-4xl font-bold mb-4">Extensions</h2>
+              <p>
+                You can create new extensions.
+                <br />
+                You can also use them to edit videos with features not
+                originally in the app.
+              </p>
             </div>
           </div>
         </div>
