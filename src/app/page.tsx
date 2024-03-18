@@ -5,6 +5,14 @@ const NotoSansFont = Noto_Sans({
   subsets: ["latin"],
   weight: "400",
 });
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 export default function Home() {
   return (
@@ -23,9 +31,23 @@ export default function Home() {
             edits, or install it on your computer for access to all its powerful
             features.
           </p>
-          <Button asChild>
-            <Link href="/download" target="_blank">Get started</Link>
-          </Button>
+          <DropdownMenu>
+            <DropdownMenuTrigger className="bg-primary text-white px-4 py-2 rounded-md text-sm">
+              Get Started
+            </DropdownMenuTrigger>
+            <DropdownMenuContent>
+              <DropdownMenuItem>
+                <Link href="/Clip-Alchemist" target="_blank">
+                  Start on the Web
+                </Link>
+              </DropdownMenuItem>
+              <DropdownMenuItem>
+                <Link href="/download" target="_blank">
+                  Download for your Computer
+                </Link>
+              </DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
         </div>
         {/* function introduction */}
         <div className="w-full">

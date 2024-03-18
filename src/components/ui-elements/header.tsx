@@ -22,7 +22,7 @@ export default function Header() {
         {/*  eslint-disable-next-line @next/next/no-img-element */}
         <img
           alt="icon"
-          src="icon48.webp"
+          src="/image/icon48.webp"
           width={40}
           height={40}
           className="rounded"
