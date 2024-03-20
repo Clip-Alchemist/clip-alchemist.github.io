@@ -1,9 +1,13 @@
 import { promises as fsPromises } from "fs";
 import path from "path";
 import matter from "gray-matter";
-import { unified } from "unified";
-import remarkParse from "remark-parse";
-import remarkHtml from "remark-html";
+import { Noto_Sans } from "next/font/google";
+const NotoSansFont = Noto_Sans({
+  subsets: ["latin"],
+  weight: "400",
+});
+import { MDXRemote } from "next-mdx-remote/rsc";
+import remarkGfm from "remark-gfm";
 
 export default async function DocsPage({
   params: { slug },
@@ -13,19 +17,56 @@ export default async function DocsPage({
   const filePath = path.join(process.cwd(), "src", "docs", `${slug}.md`);
 
   const fileContents = await fsPromises.readFile(filePath, "utf8");
-  const { data, content } = matter(fileContents);
-  const title = data.title;
-  const processedContent = await unified()
-    .use(remarkParse)
-    .use(remarkHtml)
-    .process(content);
-  const contentHtml = processedContent.toString();
-
+  const { data, content }: { data: any; content: string } =
+    matter(fileContents);
+  const title: string = data.title;
   return (
-    <div>
-      <h1>{title}</h1>
-      <div dangerouslySetInnerHTML={{ __html: contentHtml }}></div>
-    </div>
+    <main className={`w-full ${NotoSansFont.className}`}>
+      <div className="p-12 max-w-7xl grid gap-6 w-full">
+        <h2 className="text-4xl font-bold">{title}</h2>
+        <MDXRemote
+          source={content}
+          components={{
+            a: props => <a target="_blank" {...props} />,
+            img: p => {
+              const { src, ...rest } = p;
+              return (
+                <img
+                  src={
+                    src?.startsWith("http")
+                      ? src
+                      : "./posts/" + path + src?.replace(/^.\//g, "/")
+                  }
+                  {...rest}
+                />
+              );
+            },
+            h1: ({ children }) => <h1 className="pl-0">{children}</h1>,
+            h2: ({ children }) => <h2 className="pl-1">{children}</h2>,
+            h3: ({ children }) => <h3 className="pl-2">{children}</h3>,
+            h4: ({ children }) => <h4 className="pl-3">{children}</h4>,
+            h5: ({ children }) => <h5 className="pl-4">{children}</h5>,
+            h6: ({ children }) => <h6 className="pl-5">{children}</h6>,
+            p: ({ children }) => <p className="pl-6">{children}</p>,
+            ul: ({ children }) => <ul className="ml-4">{children}</ul>,
+            li: ({ children }) => (
+              <li className="list-inside list-disc">{children}</li>
+            ),
+            table: ({ children }) => (
+              <table className="block overflow-x-scroll whitespace-nowrap pl-4 ">
+                {children}
+              </table>
+            ),
+          }}
+          options={{
+            mdxOptions: {
+              remarkPlugins: [remarkGfm],
+              // rehypePlugins: [require("rehype-slug")],
+            },
+          }}
+        />
+      </div>
+    </main>
   );
 }
 export async function generateStaticParams() {
