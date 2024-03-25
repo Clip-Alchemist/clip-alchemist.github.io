@@ -23,7 +23,7 @@ export default async function DocsPage({
   return (
     <main className={`w-full ${NotoSansFont.className}`}>
       <div className="p-12 max-w-7xl grid gap-6 w-full">
-        <h2 className="text-4xl font-bold">{title}</h2>
+        <h1 className="text-4xl font-bold">{title}</h1>
         <MDXRemote
           source={content}
           components={{
@@ -31,6 +31,7 @@ export default async function DocsPage({
             img: p => {
               const { src, ...rest } = p;
               return (
+                // eslint-disable-next-line @next/next/no-img-element, jsx-a11y/alt-text
                 <img
                   src={
                     src?.startsWith("http")
@@ -42,9 +43,9 @@ export default async function DocsPage({
               );
             },
             h1: ({ children }) => <h1 className="pl-0">{children}</h1>,
-            h2: ({ children }) => <h2 className="pl-1">{children}</h2>,
-            h3: ({ children }) => <h3 className="pl-2">{children}</h3>,
-            h4: ({ children }) => <h4 className="pl-3">{children}</h4>,
+            h2: ({ children }) => <h2 className="pl-1 text-3xl">{children}</h2>,
+            h3: ({ children }) => <h3 className="pl-2 text-2xl">{children}</h3>,
+            h4: ({ children }) => <h4 className="pl-3 text-xl">{children}</h4>,
             h5: ({ children }) => <h5 className="pl-4">{children}</h5>,
             h6: ({ children }) => <h6 className="pl-5">{children}</h6>,
             p: ({ children }) => <p className="pl-6">{children}</p>,
@@ -56,6 +57,9 @@ export default async function DocsPage({
               <table className="block overflow-x-scroll whitespace-nowrap pl-4 ">
                 {children}
               </table>
+            ),
+            checkbox: ({ children }) => (
+              <input type="checkbox" className="mr-2" />
             ),
           }}
           options={{

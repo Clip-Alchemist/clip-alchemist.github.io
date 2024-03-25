@@ -2,6 +2,12 @@ import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
 import Link from "next/link";
+import { cn } from "@/lib/utils";
+import { Noto_Sans } from "next/font/google";
+const NotoSansFont = Noto_Sans({
+  subsets: ["latin"],
+  weight: "400",
+});
 
 export default async function Docs() {
   // contentディレクトリ内のマークダウンファイル一覧を取得
@@ -25,15 +31,20 @@ export default async function Docs() {
   );
 
   return (
-    <div>
-      <h1>My Blog</h1>
+    <main
+      className={cn(
+        "p-12 max-w-7xl grid gap-12 w-full",
+        NotoSansFont.className
+      )}
+    >
+      <h1 className="text-4xl font-bold">Documentation</h1>
       <ul>
         {posts.map(post => (
-          <li key={post.slug}>
+          <li key={post.slug} className="">
             <Link href={`/docs/${post.slug}`}>{post.frontmatter.title}</Link>
           </li>
         ))}
       </ul>
-    </div>
+    </main>
   );
 }
