@@ -3,12 +3,6 @@ import path from "path";
 import matter from "gray-matter";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
-import { Noto_Sans } from "next/font/google";
-const NotoSansFont = Noto_Sans({
-  subsets: ["latin"],
-  weight: "400",
-});
-
 export default async function Docs() {
   // contentディレクトリ内のマークダウンファイル一覧を取得
   const postsDirectory = path.join(process.cwd(), "src", "docs");
@@ -31,12 +25,7 @@ export default async function Docs() {
   );
 
   return (
-    <main
-      className={cn(
-        "p-12 max-w-7xl grid gap-12 w-full",
-        NotoSansFont.className
-      )}
-    >
+    <main className="p-12 max-w-7xl grid gap-12 w-full">
       <h1 className="text-4xl font-bold">Documentation</h1>
       <ul>
         {posts.map(post => (

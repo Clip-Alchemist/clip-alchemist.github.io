@@ -3,17 +3,21 @@ import "./globals.css";
 import Header from "@/components/ui-elements/header";
 import Footer from "@/components/ui-elements/footer";
 import { GoogleAnalytics } from "@next/third-parties/google";
-
+import { Noto_Sans } from "next/font/google";
+const NotoSansFont = Noto_Sans({
+  subsets: ["latin"],
+  weight: "400",
+});
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="h-full">
+    <html lang="en" className={NotoSansFont.className}>
       {/* cSpell:disable-next-line */}
       <GoogleAnalytics gaId="G-K7M7N0KCNK" />
-      <body className="h-full">
+      <body className="min-h-screen">
         <Header />
         {children}
         <Footer />

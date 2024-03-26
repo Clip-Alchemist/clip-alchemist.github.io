@@ -1,11 +1,6 @@
 import { promises as fsPromises } from "fs";
 import path from "path";
 import matter from "gray-matter";
-import { Noto_Sans } from "next/font/google";
-const NotoSansFont = Noto_Sans({
-  subsets: ["latin"],
-  weight: "400",
-});
 import { MDXRemote } from "next-mdx-remote/rsc";
 import remarkGfm from "remark-gfm";
 
@@ -21,7 +16,7 @@ export default async function DocsPage({
     matter(fileContents);
   const title: string = data.title;
   return (
-    <main className={`w-full ${NotoSansFont.className}`}>
+    <main className="w-full">
       <div className="p-12 max-w-7xl grid gap-6 w-full">
         <h1 className="text-4xl font-bold">{title}</h1>
         <MDXRemote

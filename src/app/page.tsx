@@ -1,22 +1,15 @@
-import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { Noto_Sans } from "next/font/google";
-const NotoSansFont = Noto_Sans({
-  subsets: ["latin"],
-  weight: "400",
-});
+
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
 export default function Home() {
   return (
-    <main className={`flex flex-col items-center  ${NotoSansFont.className}`}>
+    <main className="flex flex-col items-center">
       <div className="p-12 max-w-7xl grid justify-items-center gap-12 w-full">
         {/* catch copy */}
         <div className="grid justify-items-center gap-4 w-full text-center">

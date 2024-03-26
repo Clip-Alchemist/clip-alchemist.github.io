@@ -18,7 +18,7 @@ import {
 export default function Header() {
   return (
     <header className="p-4 flex justify-between items-center border-b sticky top-0 z-50 bg-white">
-      <a href="/" className="flex gap-4">
+      <a href="/" className="flex gap-4 items-center">
         {/*  eslint-disable-next-line @next/next/no-img-element */}
         <img
           alt="icon"
