@@ -2,7 +2,6 @@ import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
 import Link from "next/link";
-import { cn } from "@/lib/utils";
 export default async function Docs() {
   // contentディレクトリ内のマークダウンファイル一覧を取得
   const postsDirectory = path.join(process.cwd(), "src", "docs");

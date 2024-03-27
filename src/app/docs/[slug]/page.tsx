@@ -3,6 +3,14 @@ import path from "path";
 import matter from "gray-matter";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import remarkGfm from "remark-gfm";
+import {
+  Table,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
+import { Checkbox } from "@/components/ui/checkbox";
 
 export default async function DocsPage({
   params: { slug },
@@ -49,12 +57,20 @@ export default async function DocsPage({
               <li className="list-inside list-disc">{children}</li>
             ),
             table: ({ children }) => (
-              <table className="block overflow-x-scroll whitespace-nowrap pl-4 ">
-                {children}
-              </table>
+              <Table className="ml-4 whitespace-nowrap">{children}</Table>
             ),
-            checkbox: ({ children }) => (
-              <input type="checkbox" className="mr-2" />
+            thead: ({ children }) => (
+              <TableHeader className="">{children}</TableHeader>
+            ),
+            tr: ({ children }) => <TableRow className="">{children}</TableRow>,
+            th: ({ children }) => (
+              <TableHead className="">{children}</TableHead>
+            ),
+            td: ({ children }) => (
+              <TableCell className="">{children}</TableCell>
+            ),
+            checkbox: props => (
+              <Checkbox type="checkbox" className="mr-2" {...props} />
             ),
           }}
           options={{
