@@ -14,11 +14,22 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu";
+import {
+  Sheet,
+  SheetClose,
+  SheetContent,
+  SheetDescription,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet";
+import Link from "next/link";
+import { cn } from "@/lib/utils";
 
 export default function Header() {
   return (
     <header className="p-4 flex justify-between items-center border-b sticky top-0 z-50 bg-white">
-      <a href="/" className="flex gap-4 items-center">
+      <Link href="/" className="flex gap-4 items-center" prefetch={false}>
         {/*  eslint-disable-next-line @next/next/no-img-element */}
         <img
           alt="icon"
@@ -30,8 +41,8 @@ export default function Header() {
         <h1 className={`text-3xl ${NotoSerifFont.className}`}>
           Clip Alchemist
         </h1>
-      </a>
-      <div>
+      </Link>
+      <div className="hidden md:block">
         <NavigationMenu>
           <NavigationMenuList>
             <NavigationMenuItem>
@@ -62,6 +73,36 @@ export default function Header() {
             </NavigationMenuItem>
           </NavigationMenuList>
         </NavigationMenu>
+      </div>
+      <div className="md:hidden">
+        <Sheet>
+          <SheetTrigger className="text-2xl">☰</SheetTrigger>
+          <SheetContent>
+            <SheetHeader>
+              <SheetTitle className={cn("text-2xl", NotoSerifFont.className)}>
+                <SheetClose asChild>
+                  <Link href="/">Clip Alchemist</Link>
+                </SheetClose>
+              </SheetTitle>
+            </SheetHeader>
+            <ul>
+              <li>
+                <SheetClose asChild>
+                  <Link href="/download" className="w-full p-2">
+                    Download
+                  </Link>
+                </SheetClose>
+              </li>
+              <li>
+                <SheetClose asChild>
+                  <Link href="/docs" className="w-full p-2">
+                    Documentation
+                  </Link>
+                </SheetClose>
+              </li>
+            </ul>
+          </SheetContent>
+        </Sheet>
       </div>
     </header>
   );
