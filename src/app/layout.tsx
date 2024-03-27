@@ -39,7 +39,7 @@ export const metadata: Metadata = {
   },
   verification: {
     // cSpell:disable-next-line
-    google: "rfKiLBvqtBkqwBWnhRbMVxM5srANIl73OuriqZd24",
+    google: "rfKiLBvqtBkqwBWnhRbMVxM5srANIl73OuriqZd24-A",
   },
   alternates: {
     canonical: "/",
